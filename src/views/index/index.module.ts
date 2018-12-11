@@ -1,4 +1,4 @@
-import angular from 'angular';
+import * as angular from 'angular';
 
 import { index } from './index.component';
 import { helloAngular } from './components/hello-angular/hello-angular.component';

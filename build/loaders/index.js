@@ -1,13 +1,11 @@
 const webpack = require('webpack');
 const styles = require('./style-loader');
 
-/**
- * @type {webpack.RuleSetRule}
- */
-const javascript = {
-  test: /\.js$/,
-  loader: 'babel-loader',
-  exclude: /node_modules/
+
+/** @type {webpack.RuleSetRule} */
+const typescript = {
+  test: /\.tsx?$/,
+  loader: 'ts-loader'
 };
 
 /**
@@ -15,7 +13,10 @@ const javascript = {
  */
 const html = {
   test: /.html$/,
-  loader: 'html-loader'
+  loader: 'html-loader',
+  options: {
+    minimize: true
+  }
 };
 
 /**
@@ -58,7 +59,7 @@ const medias = {
  * @type {Array<webpack.RuleSetRule>}
  */
 let rules = [
-  javascript,
+  typescript,
   html,
   image,
   font,

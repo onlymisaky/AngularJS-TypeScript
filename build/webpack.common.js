@@ -8,7 +8,7 @@ const rules = require('./loaders');
  * @type {webpack.Configuration}
  */
 const webpackCommonConfig = {
-  entry: './src/main.js',
+  entry: './src/main.ts',
   output: {
     path: path.resolve('dist'),
     filename: '[name].js'
@@ -18,7 +18,7 @@ const webpackCommonConfig = {
     alias: {
       '@': path.resolve('src')
     },
-    extensions: ['.js', '.json']
+    extensions: ['.js', '.json', ".ts", ".tsx"]
   },
   plugins: [
     new HtmlWebpackPlugin({
