@@ -4,14 +4,14 @@ import {
   StateDeclaration
 } from '@uirouter/angularjs';
 
+import { DashboardComponent } from '@/app/dashboard/dashboard.component';
+import { HeroDetailComponent } from '@/app/hero-detail/hero-detail.component';
+import { HeroesComponent } from '@/app/heroes/heroes.component';
+
+
 export const routes: Ng1StateDeclaration[] = [
-  {
-    name: 'index',
-    url: '/index',
-    component: 'index',
-    lazyLoad(transition, state) {
-      const $ocLazyLoad = transition.injector().get('$ocLazyLoad');
-      return import('@/views/index/index.module').then(ngModule => $ocLazyLoad.load({ name: ngModule.default }))
-    }
-  }
+  { name: 'index', url: '', redirectTo: { state: 'dashboard' } },
+  { name: 'dashboard', url: '/dashboard', component: DashboardComponent.selector },
+  { name: 'detail', url: '/detail/:id', component: HeroDetailComponent.selector },
+  { name: 'heroes', url: '/heroes', component: HeroesComponent.selector },
 ];

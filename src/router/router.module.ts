@@ -5,8 +5,8 @@ import 'oclazyload';
 import { routerConfig } from './router.config';
 import { routeChange } from './router.transitions';
 
-export const routerModule: string = angular
-  .module('app.router', [
+export const RouterModule: string = angular
+  .module('Router', [
     uiRouter.default,
     'oc.lazyLoad'
   ])

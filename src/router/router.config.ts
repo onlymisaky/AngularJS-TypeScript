@@ -15,7 +15,7 @@ export function routerConfig(
 ) {
   $locationProvider.hashPrefix('');
 
-  $urlRouterProvider.otherwise('/index');
+  // $urlRouterProvider.otherwise('/index');
 
   routes.forEach(route => $stateProvider.state(route));
 }
