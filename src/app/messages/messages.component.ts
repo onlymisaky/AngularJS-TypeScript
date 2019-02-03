@@ -1,15 +1,8 @@
 import { IComponentOptions, IController } from 'angular';
 import { MessageService } from '@/app/message.service';
+import './messages.component.scss';
 
-interface Component extends IComponentOptions {
-  selector: string;
-  styles?: any[];
-}
-
-export const MessagesComponent: Component = {
-  selector: 'appMessages',
-  styles: [require('./messages.component.scss')],
-  
+export const MessagesComponent: IComponentOptions = {
   template: require('./messages.component.html'),
   controller: class implements IController {
     static $inject: string[] = ['MessageService'];

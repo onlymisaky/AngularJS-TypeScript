@@ -1,13 +1,7 @@
 import { IComponentOptions, IController } from 'angular';
+import './app.component.scss';
 
-interface Component extends IComponentOptions {
-  selector: string;
-  styles?: any[];
-}
-
-export const AppComponent: Component = {
-  selector: 'appRoot',
-  styles: [require('./app.component.scss')],
+export const AppComponent: IComponentOptions = {
   template: require('./app.component.html'),
   controller: class implements IController {
     title: string = 'Tour of Heroes';

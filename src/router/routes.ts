@@ -4,14 +4,14 @@ import {
   StateDeclaration
 } from '@uirouter/angularjs';
 
-import { DashboardComponent } from '@/app/dashboard/dashboard.component';
-import { HeroDetailComponent } from '@/app/hero-detail/hero-detail.component';
-import { HeroesComponent } from '@/app/heroes/heroes.component';
+import * as angular from 'angular';
+
+import { ILazyLoad } from 'oclazyload';
 
 
 export const routes: Ng1StateDeclaration[] = [
   { name: 'index', url: '', redirectTo: { state: 'dashboard' } },
-  { name: 'dashboard', url: '/dashboard', component: DashboardComponent.selector },
-  { name: 'detail', url: '/detail/:id', component: HeroDetailComponent.selector },
-  { name: 'heroes', url: '/heroes', component: HeroesComponent.selector },
+  { name: 'dashboard', url: '/dashboard', component: 'appDashboard' },
+  { name: 'detail', url: '/detail/:id', component: 'appDetail' },
+  { name: 'heroes', url: '/heroes', component: 'appHeroes'},
 ];

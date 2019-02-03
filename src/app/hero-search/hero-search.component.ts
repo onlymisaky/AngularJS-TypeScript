@@ -1,17 +1,9 @@
 import { IComponentOptions, IController } from 'angular';
 import { Hero } from '@/app/hero';
 import { HeroService } from '@/app/hero.service';
+import './hero-search.component.scss';
 
-
-interface Component extends IComponentOptions {
-  selector: string;
-  styles?: any[];
-}
-
-export const HeroSearchComponent: Component = {
-  selector: 'appHeroSearch',
-  styles: [require('./hero-search.component.scss')],
-
+export const HeroSearchComponent: IComponentOptions = {
   template: require('./hero-search.component.html'),
   controller: class implements IController {
     static $inject: string[] = ['HeroService'];

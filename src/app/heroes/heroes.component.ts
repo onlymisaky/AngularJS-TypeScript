@@ -1,16 +1,9 @@
 import { IComponentOptions, IController } from 'angular';
 import { Hero } from '@/app/hero';
 import { HeroService } from '@/app/hero.service';
+import './heroes.component.scss';
 
-
-interface Component extends IComponentOptions {
-  selector: string;
-  styles?: any[];
-}
-
-export const HeroesComponent: Component = {
-  selector: 'appHeroes',
-  styles: [require('./heroes.component.scss')],
+export const HeroesComponent: IComponentOptions = {
   template: require('./heroes.component.html'),
   controller: class implements IController {
 

@@ -1,16 +1,9 @@
 import { IComponentOptions, IController } from 'angular';
 import { Hero } from '@/app/hero';
 import { HeroService } from '@/app/hero.service';
+import './dashboard.component.scss';
 
-interface Component extends IComponentOptions {
-  selector: string;
-  styles?: any[];
-}
-
-export const DashboardComponent: Component = {
-  selector: 'appDashboard',
-  styles: [require('./dashboard.component.scss')],
-
+export const DashboardComponent: IComponentOptions = {
   template: require('./dashboard.component.html'),
   controller: class implements IController {
     static $inject: string[] = ['HeroService'];
