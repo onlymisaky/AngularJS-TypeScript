@@ -18,7 +18,7 @@ const declarations = {
   components: {
     appRoot: AppComponent,
     appDashboard: DashboardComponent,
-    appHeroDetail: HeroDetailComponent,
+    appDetail: HeroDetailComponent,
     appHeroSearch: HeroSearchComponent,
     appHeroes: HeroesComponent,
     appMessages: MessagesComponent
