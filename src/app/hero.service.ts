@@ -1,4 +1,4 @@
-import { IPromise, IHttpService, IQService, IDeferred } from 'angular';
+import { IPromise, IHttpService, IQService } from 'angular';
 
 import { HEROES } from '@/app/mock-heroes';
 import { Hero } from './hero';
