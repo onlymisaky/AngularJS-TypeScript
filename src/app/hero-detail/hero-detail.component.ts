@@ -12,11 +12,11 @@ export const HeroDetailComponent: IComponentOptions = {
   controller: class implements IController {
     static $inject: string[] = ['$state', 'HeroService'];
 
-    hero: Hero;
+    hero!: Hero;
 
     constructor(
       private $state: StateService,
-      private heroService: HeroService
+      private heroService: HeroService,
     ) { }
 
     $onInit() {
@@ -26,7 +26,9 @@ export const HeroDetailComponent: IComponentOptions = {
     getHero(): void {
       const id = +this.$state.params.id;
       this.heroService.getHero(id)
-        .then(hero => this.hero = hero);
+        .then((hero) => {
+          this.hero = hero;
+        });
     }
 
     goBack(): void {
@@ -37,5 +39,5 @@ export const HeroDetailComponent: IComponentOptions = {
       this.heroService.updateHero(this.hero)
         .then(() => this.goBack());
     }
-  }
-}
+  },
+};

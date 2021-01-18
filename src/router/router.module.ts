@@ -8,7 +8,7 @@ import { routeChange } from './router.transitions';
 export const RouterModule: string = angular
   .module('Router', [
     uiRouter.default,
-    'oc.lazyLoad'
+    'oc.lazyLoad',
   ])
   .config(routerConfig)
   .run(routeChange)

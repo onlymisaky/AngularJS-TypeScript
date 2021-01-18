@@ -5,7 +5,6 @@ import { Hero } from './hero';
 import { MessageService } from './message.service';
 
 export class HeroService {
-
   static $inject: string[] = ['$http', '$q', 'MessageService'];
 
   // private heroesUrl = 'api/heroes';
@@ -14,7 +13,8 @@ export class HeroService {
   constructor(
     private $http: IHttpService,
     private $q: IQService,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+  ) { }
 
   getHeroes(): IPromise<Hero[]> {
     const deferred = this.$q.defer<Hero[]>();
@@ -35,7 +35,7 @@ export class HeroService {
   getHero(id: number): IPromise<Hero> {
     const deferred = this.$q.defer<Hero>();
     this.log(`fetched hero id=${id}`);
-    deferred.resolve(this.heroes.filter(hero => hero.id === id)[0])
+    deferred.resolve(this.heroes.filter((hero) => hero.id === id)[0]);
     // this.$http.get<Hero>(this.heroesUrl)
     //   .then(({ data }) => {
     //     this.log(`fetched hero id=${id}`);
@@ -50,7 +50,7 @@ export class HeroService {
 
   searchHeroes(name: string): IPromise<Hero[]> {
     const deferred = this.$q.defer<Hero[]>();
-    const heroes = this.heroes.filter(hero => hero.name.includes(name));
+    const heroes = this.heroes.filter((hero) => hero.name.includes(name));
     if (heroes.length) {
       this.log(`found ${heroes.length} heroes whose name contains ${name}`);
     } else {
@@ -72,12 +72,12 @@ export class HeroService {
 
   addHero(hero: Hero): IPromise<Hero> {
     const deferred = this.$q.defer<Hero>();
-    let ids = this.heroes.map(hero => hero.id);
+    let ids = this.heroes.map(({ id }) => id);
     if (ids.length === 0) {
       ids = [10];
     }
     const id = Math.max(...ids) + 1;
-    let newHero = { id, name: hero.name };
+    const newHero = { id, name: hero.name };
     this.heroes.push(newHero);
     this.log('added new hero');
     deferred.resolve(newHero);
@@ -96,7 +96,7 @@ export class HeroService {
   deleteHero(hero: Hero | number): IPromise<Hero> {
     const deferred = this.$q.defer<Hero>();
     const id = typeof hero === 'number' ? hero : hero.id;
-    let index = this.heroes.findIndex(hero => hero.id === id);
+    const index = this.heroes.findIndex((item) => item.id === id);
     this.log(`deleted hero id=${id}`);
     deferred.resolve(this.heroes.splice(index, 1)[0]);
     // const url = `${this.heroesUrl}/${id}`;

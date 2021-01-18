@@ -6,10 +6,10 @@ import './heroes.component.scss';
 export const HeroesComponent: IComponentOptions = {
   template: require('./heroes.component.html'),
   controller: class implements IController {
-
     static $inject: string[] = ['HeroService'];
 
-    heroes: Hero[];
+    heroes: Hero[] = [];
+
     heroName: string = '';
 
     constructor(private heroService: HeroService) { }
@@ -21,10 +21,13 @@ export const HeroesComponent: IComponentOptions = {
     getHeroes(): void {
       this
         .heroService.getHeroes()
-        .then(heroes => this.heroes = heroes);
+        .then((heroes) => {
+          this.heroes = heroes;
+        });
     }
 
     add(name: string): void {
+      // eslint-disable-next-line no-param-reassign
       name = name.trim();
       if (!name) { return; }
       this.heroService.addHero({ name } as Hero)
@@ -32,9 +35,9 @@ export const HeroesComponent: IComponentOptions = {
     }
 
     delete(hero: Hero): void {
-      this.heroes = this.heroes.filter(h => h !== hero);
+      this.heroes = this.heroes.filter((h) => h !== hero);
       this.heroService.deleteHero(hero)
         .then();
     }
-  }
-}
+  },
+};

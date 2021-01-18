@@ -6,6 +6,7 @@ export const MessagesComponent: IComponentOptions = {
   template: require('./messages.component.html'),
   controller: class implements IController {
     static $inject: string[] = ['MessageService'];
+
     constructor(private messageService: MessageService) { }
-  }
-}
+  },
+};

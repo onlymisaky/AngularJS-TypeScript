@@ -8,13 +8,15 @@ export const HeroSearchComponent: IComponentOptions = {
   controller: class implements IController {
     static $inject: string[] = ['HeroService'];
 
-    heroes: Hero[];
+    heroes: Hero[] = [];
 
     constructor(private heroService: HeroService) { }
 
     search(term: string): void {
       this.heroService.searchHeroes(term)
-        .then(heroes => this.heroes = heroes);
+        .then((heroes) => {
+          this.heroes = heroes;
+        });
     }
-  }
-}
+  },
+};
