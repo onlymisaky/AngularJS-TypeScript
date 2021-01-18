@@ -12,7 +12,10 @@ const javascript = {
 /** @type {import('webpack').RuleSetRule} */
 const typescript = {
   test: /\.tsx?$/,
-  loader: 'ts-loader'
+  use: [
+    'babel-loader',
+    'ts-loader',
+  ],
 };
 
 
